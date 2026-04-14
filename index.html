@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Input Data</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url('sekolah.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* overlay biar tulisan tetap jelas */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.1);
+      z-index: -1;
+    }
+
+    /* logo */
+    #logo {
+      display: block;
+      margin: 20px auto 10px auto;
+      width: 100px;
+    }
+
+    #form-container {
+      width: 400px;
+      margin: 20px auto;
+      background: #ffffff;
+      padding: 25px 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border-color: #74ebd5;
+      outline: none;
+      box-shadow: 0 0 5px rgba(116, 235, 213, 0.8);
+    }
+
+    input[type="submit"] {
+      margin-top: 20px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background: #45a049;
+    }
+
+    #footer {
+      text-align: center;
+      margin-top: 20px;
+      color: white;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- LOGO -->
+  <img src="LOGO SDIT 2023.png" id="logo">
+
+  <div id="form-container">
+    <h2>INPUT DATA KE SPREAD SHEET</h2>
+
+    <form action="https://script.google.com/macros/s/AKfycbwrwdgBrpXAB6AM2rq2alr-KTEUaTTB6vqmkq2mGZBSHDZ2tjT6899JEphDdGadkX7-/exec" method="post">
+
+      <label for="nama">Nama:</label>
+      <input type="text" id="nama" name="nama" required>
+
+      <label for="nipd">NIPD:</label>
+      <input type="text" id="nipd" name="nipd" required>
+
+      <label for="jk">Jenis Kelamin:</label>
+      <input type="text" id="jk" name="jk" required>
+
+      <label for="nisn">NISN:</label>
+      <input type="text" id="nisn" name="nisn" required>
+
+      <label for="tempat_lahir">Tempat Lahir:</label>
+      <input type="text" id="tempat_lahir" name="tempat_lahir" required>
+
+      <label for="tanggal_lahir">Tanggal Lahir:</label>
+      <input type="date" id="tanggal_lahir" name="tanggal_lahir" pattern="[0-9]{10,12}" required>
+
+      <label for="nik">NIK:</label>
+      <input type="text" id="nik" name="nik" required>
+
+      <label for="agama">Agama:</label>
+      <input type="text" id="agama" name="agama" required>
+
+      <label for="alamat">Alamat:</label>
+      <input type="text" id="alamat" name="alamat" required>
+
+      <label for="nama_ayah">Nama Ayah:</label>
+      <input type="text" id="nama_ayah" name="nama_ayah" required>
+
+      <label for="nama_ibu">Nama Ibu:</label>
+      <input type="text" id="nama_ibu" name="nama_ibu" required>
+
+       <label for="kelas">Kelas:</label>
+      <input type="text" id="kelas" name="kelas" required>
+
+      <input type="submit" value="Simpan Data">
+    </form>
+  </div>
+
+  <div id="footer">
+    Jangan Lupa Diisi Dengan Lengkap Yah Bu Guru Tihamah :) :)
+  </div>
+
+  <script>
+    const form = document.querySelector("form");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      fetch(form.action, {
+        method: "POST",
+        body: new FormData(form)
+      })
+      .then(() => {
+        alert("✅ Data berhasil disimpan!");
+        form.reset();
+      })
+      .catch(() => {
+        alert("❌ Gagal menyimpan data!");
+      });
+    });
+  </script>
+
+</body>
+</html>
